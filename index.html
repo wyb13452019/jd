@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 1. 写移动端页面第一步先加视口  推荐使用完整视口-->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东移动端的主页</title>
+    <!-- 1. 引入swiper的css文件 -->
+    <link rel="stylesheet" href="./lib/swiper/css/swiper.css">
+    <!-- 1. 引入公式样式初始化文件base.css -->
+    <!-- <link rel="stylesheet" href="./css/base.css"> -->
+    <!-- 2. 引包引入css文件 引入完了公共样式才引入自己写的样式-->
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    <!-- 1. 如果使用了less因为会在less里面就把base 和 index 结和在一起 页面只要引入index.css -->
+    <!-- 因为less源码在less夹里面 编译的css文件 也是在旁边 -->
+    <link rel="stylesheet" href="less/index.css">
+</head>
+
+<body>
+    <!-- 1. 头部区域 -->
+    <!-- 推荐外面大容器使用id选择器 -->
+    <!-- 1. 因为id选择器的优先级很高 提高选择器的优先级 可以方便覆盖一些别人写的样式 -->
+    <!-- 2. id只有一个唯一的 方便JS去获取元素 -->
+    <header id="header">
+        <div class="left">
+            <a href="#"></a>
+        </div>
+        <div class="center">
+            <form action="#">
+                <i class="icon-search"></i>
+                <input type="search" placeholder="请输入要搜索的商品">
+            </form>
+        </div>
+        <div class="right">
+            <a href="#">登录</a>
+        </div>
+    </header>
+    <!-- 轮播图区域 -->
+    <section id="slide">
+        <!-- 2. 使用swiper官网轮播图结构 -->
+        <!-- swiper-container轮播图大容器 -->
+        <div class="swiper-container">
+            <!-- swiper-wrapper所有轮播图项的容器 -->
+            <div class="swiper-wrapper">
+                <!-- swiper-slide每一项轮播图 里面可以放任意内容图片文字都可以 -->
+                <div class="swiper-slide">
+                    <img src="./images/l1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./images/l2.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./images/l3.jpg" alt="">
+                </div>
+            </div>
+            <!-- 如果需要分页器 小圆点 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 左右箭头 -->
+            <!-- <div class="swiper-button-prev"></div> -->
+            <!-- <div class="swiper-button-next"></div> -->
+
+            <!-- 如果需要滚动条 滚动条 -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
+    </section>
+    <!-- 导航条区域 -->
+    <nav id="nav">
+        <ul>
+            <!-- li*8>a[href="#"]>img[src="./images/nav$.png"]+p{京东导航} -->
+            <li>
+                <a href="#">
+                    <img src="./images/nav0.png" alt="">
+                    <p>京东导航</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/nav1.png" alt="">
+                    <p>京东导航</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/nav2.png" alt="">
+                    <p>京东导航</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/nav3.png" alt="">
+                    <p>京东导航</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/nav4.png" alt="">
+                    <p>京东导航</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/nav5.png" alt="">
+                    <p>京东导航</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/nav6.png" alt="">
+                    <p>京东导航</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/nav7.png" alt="">
+                    <p>京东导航</p>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+    <!-- 主体商品区域 -->
+    <main id="main">
+        <!-- jd秒杀区域 -->
+        <div class="seckill">
+            <!-- 秒杀标题 -->
+            <div class="title">
+                <div class="left">
+                    <img src="images/seckill-icon.png" alt="" class="seckill-icon">
+                    <span class="seckill-name">掌上秒杀</span>
+                    <!-- 倒计时容器 -->
+                    <div class="seckill-downtime">
+                        <span>0</span>
+                        <span>0</span>
+                        <span>:</span>
+                        <span>0</span>
+                        <span>0</span>
+                        <span>:</span>
+                        <span>0</span>
+                        <span>0</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="#" class="seckill-more">更多></a>
+                </div>
+            </div>
+            <!-- 秒杀内容 -->
+            <div class="content">
+                <ul>
+                    <!-- li*3>a[href="#"]>img[src="images/seckill-img.jpg"]+p{￥6998}+p>del{￥7998} -->
+                    <li>
+                        <a href="#">
+                            <img src="images/seckill-img.jpg" alt="">
+                            <p><span>￥6998</span></p>
+                            <p><del>￥7998</del></p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/seckill-img.jpg" alt="">
+                            <p><span>￥6998</span></p>
+                            <p><del>￥7998</del></p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/seckill-img.jpg" alt="">
+                            <p><span>￥6998</span></p>
+                            <p><del>￥7998</del></p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- jd超市区域 -->
+        <div class="market">
+            <div class="title">
+                <h4>京东超市</h4>
+            </div>
+            <div class="content">
+                <div class="left">
+                    <a href="#">
+                        <img src="./images/cp1.jpg" alt="">
+                    </a>
+                </div>
+                <div class="right bl">
+                    <a href="#" class="bb">
+                        <img src="./images/cp2.jpg" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="./images/cp3.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="market">
+            <div class="title">
+                <h4>京东超市</h4>
+            </div>
+            <div class="content">
+                <div class="left">
+                    <a href="#" class="">
+                        <img src="./images/cp5.jpg" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="./images/cp6.jpg" alt="">
+                    </a>
+
+                </div>
+                <div class="right">
+                    <a href="#">
+                        <img src="./images/cp4.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="market">
+            <div class="title">
+                <h4>京东超市</h4>
+            </div>
+            <div class="content">
+                <div class="left br">
+                    <a href="#">
+                        <img src="./images/cp1.jpg" alt="">
+                    </a>
+                </div>
+                <div class="right">
+                    <a href="#" class="bb">
+                        <img src="./images/cp2.jpg" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="./images/cp3.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- 底部区域 -->
+    <footer id="footer">
+        <ul>
+            <li><a href="index.html"><img src="https://m.360buyimg.com/mobilecms/jfs/t15145/137/2502885754/3106/de5e0b14/5aa10cd2N46f18ce6.png"
+                        alt=""></a></li>
+            <li><a href="category.html"><img src="https://m.360buyimg.com/mobilecms/jfs/t19183/49/696491919/3763/dec8cceb/5aa10cdbNa9cd0320.png"
+                        alt=""></a></li>
+            <li><a href="#"><img src="https://m.360buyimg.com/mobilecms/jfs/t18583/69/717127328/4407/5e47882b/5aa10ceaN649eec12.png"
+                        alt=""></a></li>
+            <li><a href="#"><img src="https://m.360buyimg.com/mobilecms/jfs/t17782/11/2358895717/4684/ad19de7f/5af43af1N04ef5a16.png"
+                        alt=""></a></li>
+        </ul>
+    </footer>
+    <!-- 1. 引入swiper的js文件 因为自己的index.js依赖这个swiper.js 先引入被依赖的文件-->
+    <script src="./lib/swiper/js/swiper.js"></script>
+    <!-- 1. 引入主页的js文件 -->
+    <script src="js/index.js"></script>
+</body>
+
+</html>

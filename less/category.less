@@ -1,0 +1,164 @@
+/* 公共样式都是在base.less 里面在category.less直接引入base.less */
+@import './base.less';
+
+/* 分类头部的图标有点不一样 单独覆盖图标样式 */
+#header {
+    background-color: #ccc;
+
+    .left {
+        width: .4rem;
+        height: .4rem;
+
+        .icon-back {
+            /* 精灵图也是2倍也要缩小 */
+            background-image: url(../images/sprites.png);
+            background-size: 2rem 2rem;
+            background-position: -0.2rem 0;
+            width: .2rem;
+            height: .2rem;
+        }
+    }
+
+    .right {
+        width: .4rem;
+        height: .4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon-menu {
+            /* 精灵图也是2倍也要缩小 */
+            background-image: url(../images/sprites.png);
+            background-size: 2rem 2rem;
+            background-position: -0.6rem 0;
+            width: .2rem;
+            height: .2rem;
+            // margin: .1rem auto;
+        }
+    }
+}
+
+// html,body{
+//     height: 100%;
+// }
+/* 主体分类的样式 */
+#main {
+    display: flex;
+    // margin-top: .4rem;
+    padding-top: .4rem;
+    padding-bottom: .5rem;
+    // 6.67rem也是整屏高度  rem有些手机宽高比例不一样
+    // height: 6.67rem;
+    // 100vh也是整屏高度 推荐使用vh
+    height: 100vh;
+    // 100%也可以但是要从html>body>main
+    // height: 100%;
+    overflow: hidden;
+
+    .category-left {
+        width: .85rem;
+        // left继承main的内容的高度
+        height: 100%;
+
+        // 这个样式非常重要一定要保证 子元素高度超过父元素高度
+        // 父元素高度固定从他的父元素从main继承下来
+        // 子元素高度auto 由内容撑开 ul li内容撑开
+        .swiper-container {
+            // 给swiper-container容器滑动大容器他的高度固定和要滑动区域高度一样
+            height: 100%;
+
+            .swiper-slide {
+
+                /* 是为了覆盖默认swiper.css里面加的100%的高度
+                这个时候需要做的内容滚动不是轮播图 内容滚动必须要 子元素高度超过父元素高度 不然就滑动不了 */
+                /* swiper-slide的高度应该里面的内容文字撑开的高度 设置height:auto */
+                height: auto;
+
+            }
+        }
+
+        ul {
+            li {
+                a {
+                    display: block;
+                    height: .45rem;
+                    text-align: center;
+                    line-height: .45rem;
+                    background-color: #ccc;
+                }
+            }
+
+            li.active {
+                a {
+                    background-color: #fff;
+                    color: @main-color;
+                }
+            }
+        }
+    }
+
+    .category-right {
+        flex: 1;
+        padding: .07rem;
+
+        // 这个样式非常重要一定要保证 子元素高度超过父元素高度
+        // 父元素高度固定从他的父元素从main继承下来
+        // 子元素高度auto 由内容撑开 ul li内容撑开
+        .swiper-container {
+            // 给swiper-container容器滑动大容器他的高度固定和要滑动区域高度一样
+            height: 100%;
+
+            .swiper-slide {
+
+                /* 是为了覆盖默认swiper.css里面加的100%的高度
+                这个时候需要做的内容滚动不是轮播图 内容滚动必须要 子元素高度超过父元素高度 不然就滑动不了 */
+                /* swiper-slide的高度应该里面的内容文字撑开的高度 设置height:auto */
+                height: auto;
+
+            }
+            /* 设置滚动条样式 */
+            .swiper-scrollbar{
+                right: 0px;
+                width: 3px;
+                background: rgba(255, 0, 0, 0.1);
+                .swiper-scrollbar-drag{
+                    background: rgba(0, 255, 0, 0.5);
+                }
+            }
+        }
+
+        .banner {
+            img {
+                width: 100%;
+            }
+        }
+
+        .jd-brand {
+            margin-top: .1rem;
+
+            ul {
+                display: flex;
+                // 有多行一定要加换行
+                flex-wrap: wrap;
+
+                li {
+                    width: 33.33%;
+
+                    a {
+                        display: block;
+                        text-align: center;
+
+                        img {
+                            width: .7rem;
+                        }
+
+                        span {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

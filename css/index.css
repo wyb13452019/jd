@@ -1,0 +1,106 @@
+/* 头部区域样式 */
+#header{
+    position: fixed;
+    /* 定位了会脱标不会有默认100%宽度由内容撑开 */
+    /* 如果要100%要手动添加 */
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    /* background-color:red; */
+}
+#header .left{
+    width: 80px;
+    height: 40px;
+    display: flex;
+    /* 使用伸缩布局让内容居中 */
+    /* 主轴居中 默认主轴X轴 */
+    justify-content: center;
+    /* 侧轴居中 Y轴 */
+    align-items: center;
+}
+#header .left a{
+    /* 京东图片是精灵图使用背景图的方式引入 */
+    /* 在CSS里面引入图片相对路径相对当前的CSS文件 */
+    background-image: url("../images/sprites.png");
+    /* 因为所有图片都是2倍图 背景图也不例外也要缩小1半 */
+    /* 设置背景图大小 */
+    background-size: 200px 200px;
+    /* 背景图定位也要改 */
+    background-position: 0 -110px;
+    width: 58px;
+    height: 21px;
+    display: block;
+    
+}
+#header .center {
+    flex: 1;
+    display: flex;
+    /* 让表单 侧轴Y轴居中 */
+    align-items: center;
+}
+#header .center form {
+    width: 100%;
+    position: relative;
+}
+/* 设置form表单里面的图标样式 */
+#header .center form i{
+    width: 21px;
+    height: 21px;
+    /* 精灵图也是2倍也要缩小 */
+    background-image: url(../images/sprites.png);
+    background-size: 200px 200px;
+    background-position: -58px -110px;
+    position: absolute;
+    left: 5px;
+    top: 6px;
+}
+#header .center form input{
+    width: 100%;
+    height: 30px;
+    /* 圆角只要高度的一半 */
+    border-radius: 15px;
+    /* 设置间距让文字挤到右边不和定位图标重叠 */
+    padding-left: 30px;
+}
+
+#header .right {
+    width: 50px;
+    height: 40px;
+}
+#header .right a{
+    display: block;
+    color:#fff;
+    text-align: center;
+    line-height: 40px;
+}
+/* 轮播图样式 */
+#slide img{
+    width: 100%;
+}
+
+/* 导航区域样式 */
+#nav ul{
+    display: flex;
+    /* 设置flex支持换行 */
+    flex-wrap: wrap;
+    
+}
+#nav ul li{
+    /* flex: 1; */
+    width: 25%;
+}
+#nav ul li a{
+    display: flex;
+    /* 默认flex 是X 会唉在一行 使用垂直方向 用2行显示 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+#nav ul li a img{
+    width: 40px;
+}
+#nav ul li a p{
+    margin-top: 5px;
+}

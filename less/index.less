@@ -1,0 +1,205 @@
+// 在index.less里面引包引入base.less
+// @import '引包的文件路径'
+@import './base.less';
+
+
+/* 轮播图样式 */
+#slide {
+    img {
+        width: 100%;
+    }
+
+    // swiper小圆点被选中的样式 修改成白色
+    .swiper-pagination-bullet-active {
+        background-color: #fff;
+    }
+}
+
+/* 导航区域样式 */
+
+#nav {
+    ul {
+        display: flex;
+        /* 设置flex支持换行 */
+        flex-wrap: wrap;
+
+        li {
+            /* flex: 1; */
+            width: 25%;
+
+            a {
+                display: flex;
+                /* 默认flex 是X 会唉在一行 使用垂直方向 用2行显示 */
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0.05rem 0;
+
+                img {
+                    width: 0.4rem;
+                }
+
+                p {
+                    margin-top: 0.05rem;
+                }
+            }
+        }
+    }
+}
+
+/* 主体商品的样式 */
+#main {
+    background-color: #ccc;
+    /* 父子元素的间距使用padding */
+    // padding: 0 0.1rem;
+    // 如果不想使用margin 防止塌陷可以使用padding
+    padding: 0.1rem;
+    // 解决margin塌陷问题
+    // overflow: hidden;
+    border: 0.01rem solid transparent;
+    // 把商品底部内容往上挤 要60本身底部有10+50就是60
+    padding-bottom: 0.6rem;
+
+    // 让自身main和底部的距离
+    // margin-bottom: 0.5rem;
+    .seckill {
+        /* 兄弟之间的使用margin  但是第一个元素上面没有兄弟 参照父元素就会塌陷*/
+        // margin-top: 0.1rem;
+        background-color: #fff;
+
+        .title {
+            display: flex;
+            // 两端对齐 让left 和 right 居左和居右
+            justify-content: space-between;
+            line-height: 0.3rem;
+
+            .left {
+                display: flex;
+
+                .seckill-icon {
+                    width: 0.2rem;
+                    height: 0.25rem;
+                    margin-left: 0.05rem;
+                }
+
+                .seckill-name {
+                    margin-left: 0.05rem;
+                    /* 使用jd主体色变量 */
+                    color: @main-color;
+                }
+
+                .seckill-downtime {
+                    margin-left: 0.05rem;
+
+                    // :not 排除伪类 把你要排除元素选择器放在括号里面
+                    span:not(:nth-child(3n)) {
+                        display: inline-block;
+                        width: 0.15rem;
+                        height: 0.15rem;
+                        line-height: 0.15rem;
+                        text-align: center;
+                        background-color: #000;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .right {
+                .seckill-more {
+                    margin-right: 0.1rem;
+                }
+            }
+        }
+
+        .content {
+            ul {
+                display: flex;
+
+                li {
+                    flex: 1;
+
+                    a {
+                        display: block;
+                        text-align: center;
+
+                        img {
+                            width: 1.1rem;
+                            height: 1.1rem;
+                        }
+
+                        p {
+                            text-align: center;
+                            color: @main-color;
+                            font-size: 0.12rem;
+
+                            del {
+                                color: #ccc;
+                            }
+                        }
+                    }
+                }
+
+                // li:nth-child(n+2){
+                // li:not(:first-child){
+                // ~表示相邻后面的所有兄弟 而且满足后面这个选择器 第一li后面所有兄弟li
+                li~li {
+                    border-left: 0.01rem solid #ccc;
+                }
+            }
+        }
+    }
+
+    .market {
+        background-color: #fff;
+        margin-top: 0.1rem;
+
+        .title {
+            border-bottom: 0.01rem solid #ccc;
+
+            >h4 {
+                line-height: 0.3rem;
+                padding-left: 0.3rem;
+                font-weight: normal;
+                position: relative;
+            }
+
+            h4::before {
+                content: '';
+                position: absolute;
+                width: 0.04rem;
+                height: 0.14rem;
+                left: 0.2rem;
+                top: 0.07rem;
+                background-color: @main-color;
+            }
+        }
+
+        .content {
+            display: flex;
+
+            .left {
+                width: 50%;
+
+                a {
+                    display: block;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .right {
+                width: 50%;
+
+                a {
+                    display: block;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,261 @@
+/* 公共样式都是在base.less 里面在category.less直接引入base.less */
+/* 方便开发使用* 上线的时候把常见有间距标签改一下就好了 */
+* {
+  margin: 0;
+  padding: 0;
+  /* 给所有元素设置这个盒模型属性为了让盒模型的和设置的宽度一样 
+   因为移动端做全屏页面宽度100% 如果因为边框或者padding导致超出范围出现滚动条不利于用户体验 */
+  box-sizing: border-box;
+  /* 设置移动端点击高亮背景色  去掉就设置为透明颜色即可*/
+  -webkit-tap-highlight-color: transparent;
+  /* 设置文字允许字体小于12px; */
+  -webkit-text-size-adjust: none;
+  /* 防止文字的锯齿样式 */
+  -webkit-font-smoothing: antialiased;
+}
+/* 改变根元素也是属于公共代码放到base.less里面方便别的文件使用 */
+html {
+  font-size: 26.6667vw;
+}
+/* 给body设置字体默认样式 */
+body {
+  font-size: 0.14rem;
+  font-family: -apple-system, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+li {
+  list-style: none;
+}
+input {
+  border: 0;
+  outline: none;
+}
+img {
+  /* 解决图片底部3px间隙问题 */
+  vertical-align: middle;
+}
+i {
+  /* 去掉斜体 */
+  font-style: normal;
+}
+.bt {
+  border-top: 1px solid #ccc;
+}
+.bb {
+  border-bottom: 1px solid #ccc;
+}
+.bl {
+  border-left: 1px solid #ccc;
+}
+.br {
+  border-right: 1px solid #ccc;
+}
+/* 因为头部底部每一个页面都一样把样式作为公共样式 */
+/* 公共头部区域样式 */
+#header {
+  position: fixed;
+  /* 定位了会脱标不会有默认100%宽度由内容撑开 */
+  /* 如果要100%要手动添加 */
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  z-index: 2;
+}
+#header .left {
+  width: 0.8rem;
+  height: 0.4rem;
+  display: flex;
+  /* 使用伸缩布局让内容居中 */
+  /* 主轴居中 默认主轴X轴 */
+  justify-content: center;
+  /* 侧轴居中 Y轴 */
+  align-items: center;
+}
+#header .left a {
+  /* 京东图片是精灵图使用背景图的方式引入 */
+  /* 在CSS里面引入图片相对路径相对当前的CSS文件 */
+  background-image: url("../images/sprites.png");
+  /* 因为所有图片都是2倍图 背景图也不例外也要缩小1半 */
+  /* 设置背景图大小 */
+  background-size: 2rem 2rem;
+  /* 背景图定位也要改 */
+  background-position: 0 -1.1rem;
+  width: 0.58rem;
+  height: 0.21rem;
+  display: block;
+}
+#header .center {
+  flex: 1;
+  display: flex;
+  /* 让表单 侧轴Y轴居中 */
+  align-items: center;
+}
+#header .center form {
+  width: 100%;
+  position: relative;
+}
+#header .center form i {
+  width: 0.21rem;
+  height: 0.21rem;
+  /* 精灵图也是2倍也要缩小 */
+  background-image: url(../images/sprites.png);
+  background-size: 2rem 2rem;
+  background-position: -0.58rem -1.1rem;
+  position: absolute;
+  left: 0.05rem;
+  top: 0.06rem;
+}
+#header .center form input {
+  width: 100%;
+  height: 0.3rem;
+  /* 圆角只要高度的一半 */
+  border-radius: 0.15rem;
+  /* 设置间距让文字挤到右边不和定位图标重叠 */
+  padding-left: 0.3rem;
+  font-size: 0.14rem;
+}
+#header .right {
+  width: 0.5rem;
+  height: 0.4rem;
+}
+#header .right a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  line-height: 0.4rem;
+}
+/* 底部区域的样式 */
+#footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+#footer ul {
+  display: flex;
+}
+#footer ul li {
+  width: 25%;
+}
+#footer ul li a {
+  display: block;
+  text-align: center;
+}
+#footer ul li a img {
+  width: 0.65rem;
+  height: 0.5rem;
+}
+/* 分类头部的图标有点不一样 单独覆盖图标样式 */
+#header {
+  background-color: #ccc;
+}
+#header .left {
+  width: .4rem;
+  height: .4rem;
+}
+#header .left .icon-back {
+  /* 精灵图也是2倍也要缩小 */
+  background-image: url(../images/sprites.png);
+  background-size: 2rem 2rem;
+  background-position: -0.2rem 0;
+  width: .2rem;
+  height: .2rem;
+}
+#header .right {
+  width: .4rem;
+  height: .4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .right .icon-menu {
+  /* 精灵图也是2倍也要缩小 */
+  background-image: url(../images/sprites.png);
+  background-size: 2rem 2rem;
+  background-position: -0.6rem 0;
+  width: .2rem;
+  height: .2rem;
+}
+/* 主体分类的样式 */
+#main {
+  display: flex;
+  padding-top: .4rem;
+  padding-bottom: .5rem;
+  height: 100vh;
+  overflow: hidden;
+}
+#main .category-left {
+  width: .85rem;
+  height: 100%;
+}
+#main .category-left .swiper-container {
+  height: 100%;
+}
+#main .category-left .swiper-container .swiper-slide {
+  /* 是为了覆盖默认swiper.css里面加的100%的高度
+                这个时候需要做的内容滚动不是轮播图 内容滚动必须要 子元素高度超过父元素高度 不然就滑动不了 */
+  /* swiper-slide的高度应该里面的内容文字撑开的高度 设置height:auto */
+  height: auto;
+}
+#main .category-left ul li a {
+  display: block;
+  height: .45rem;
+  text-align: center;
+  line-height: .45rem;
+  background-color: #ccc;
+}
+#main .category-left ul li.active a {
+  background-color: #fff;
+  color: #e93b3d;
+}
+#main .category-right {
+  flex: 1;
+  padding: .07rem;
+}
+#main .category-right .swiper-container {
+  height: 100%;
+  /* 设置滚动条样式 */
+}
+#main .category-right .swiper-container .swiper-slide {
+  /* 是为了覆盖默认swiper.css里面加的100%的高度
+                这个时候需要做的内容滚动不是轮播图 内容滚动必须要 子元素高度超过父元素高度 不然就滑动不了 */
+  /* swiper-slide的高度应该里面的内容文字撑开的高度 设置height:auto */
+  height: auto;
+}
+#main .category-right .swiper-container .swiper-scrollbar {
+  right: 0px;
+  width: 3px;
+  background: rgba(255, 0, 0, 0.1);
+}
+#main .category-right .swiper-container .swiper-scrollbar .swiper-scrollbar-drag {
+  background: rgba(0, 255, 0, 0.5);
+}
+#main .category-right .banner img {
+  width: 100%;
+}
+#main .category-right .jd-brand {
+  margin-top: .1rem;
+}
+#main .category-right .jd-brand ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+#main .category-right .jd-brand ul li {
+  width: 33.33%;
+}
+#main .category-right .jd-brand ul li a {
+  display: block;
+  text-align: center;
+}
+#main .category-right .jd-brand ul li a img {
+  width: .7rem;
+}
+#main .category-right .jd-brand ul li a span {
+  display: block;
+}

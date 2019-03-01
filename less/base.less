@@ -1,0 +1,188 @@
+// 通常全局变量都放到公共样式里面 所有less文件都能使用
+// 定义了一个jd主题色的变量
+@main-color: #e93b3d;
+
+/* 方便开发使用* 上线的时候把常见有间距标签改一下就好了 */
+* {
+    margin: 0;
+    padding: 0;
+    /* 给所有元素设置这个盒模型属性为了让盒模型的和设置的宽度一样 
+   因为移动端做全屏页面宽度100% 如果因为边框或者padding导致超出范围出现滚动条不利于用户体验 */
+    box-sizing: border-box;
+    /* 设置移动端点击高亮背景色  去掉就设置为透明颜色即可*/
+    -webkit-tap-highlight-color: transparent;
+    /* 设置文字允许字体小于12px; */
+    -webkit-text-size-adjust: none;
+    /* 防止文字的锯齿样式 */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 改变根元素也是属于公共代码放到base.less里面方便别的文件使用 */
+
+html {
+    // 假设了375屏幕下根元素100px  因为设计稿750 对应手机375 开发使用375调试以375手机作为参照物
+    // 100px 求出100px占据整个375屏多少  100px / 375 == 0.266667  变成vw是百分比*100  26.666667vw
+    // 根元素的字体是用来实现屏幕适配的 跟文字大小没关系
+    font-size: 26.6667vw;
+}
+
+/* 给body设置字体默认样式 */
+body {
+    // 一定不能继承html字体大小文字会变很大  要给body设置 font-size 让后面元素字体参照body
+    font-size: 0.14rem;
+    font-family: -apple-system, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    border: 0;
+    outline: none;
+}
+
+img {
+    /* 解决图片底部3px间隙问题 */
+    vertical-align: middle;
+}
+
+i {
+    /* 去掉斜体 */
+    font-style: normal;
+}
+
+// 定义一些公共边框类名
+.bt {
+    border-top: 1px solid #ccc;
+}
+
+.bb {
+    border-bottom: 1px solid #ccc;
+}
+
+.bl {
+    border-left: 1px solid #ccc;
+}
+
+.br {
+    border-right: 1px solid #ccc;
+}
+
+/* 因为头部底部每一个页面都一样把样式作为公共样式 */
+
+/* 公共头部区域样式 */
+#header {
+    position: fixed;
+    /* 定位了会脱标不会有默认100%宽度由内容撑开 */
+    /* 如果要100%要手动添加 */
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    z-index: 2;
+
+    .left {
+        width: 0.8rem;
+        height: 0.4rem;
+        display: flex;
+        /* 使用伸缩布局让内容居中 */
+        /* 主轴居中 默认主轴X轴 */
+        justify-content: center;
+        /* 侧轴居中 Y轴 */
+        align-items: center;
+
+        a {
+            /* 京东图片是精灵图使用背景图的方式引入 */
+            /* 在CSS里面引入图片相对路径相对当前的CSS文件 */
+            background-image: url("../images/sprites.png");
+            /* 因为所有图片都是2倍图 背景图也不例外也要缩小1半 */
+            /* 设置背景图大小 */
+            background-size: 2rem 2rem;
+            /* 背景图定位也要改 */
+            background-position: 0 -1.1rem;
+            width: 0.58rem;
+            height: 0.21rem;
+            display: block;
+        }
+    }
+
+    .center {
+        flex: 1;
+        display: flex;
+        /* 让表单 侧轴Y轴居中 */
+        align-items: center;
+
+        form {
+            width: 100%;
+            position: relative;
+
+            i {
+                width: 0.21rem;
+                height: 0.21rem;
+                /* 精灵图也是2倍也要缩小 */
+                background-image: url(../images/sprites.png);
+                background-size: 2rem 2rem;
+                background-position: -0.58rem -1.1rem;
+                position: absolute;
+                left: 0.05rem;
+                top: 0.06rem;
+            }
+
+            input {
+                width: 100%;
+                height: 0.3rem;
+                /* 圆角只要高度的一半 */
+                border-radius: 0.15rem;
+                /* 设置间距让文字挤到右边不和定位图标重叠 */
+                padding-left: 0.3rem;
+                font-size: 0.14rem;
+            }
+        }
+    }
+
+    .right {
+        width: 0.5rem;
+        height: 0.4rem;
+
+        a {
+            display: block;
+            color: #fff;
+            text-align: center;
+            line-height: 0.4rem;
+        }
+    }
+}
+
+/* 底部区域的样式 */
+#footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+
+    ul {
+        display: flex;
+
+        li {
+            width: 25%;
+
+            a {
+                display: block;
+                text-align: center;
+
+                img {
+                    width: 0.65rem;
+                    height: 0.5rem;
+                }
+            }
+        }
+    }
+}
